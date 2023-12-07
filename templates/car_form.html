@@ -1,0 +1,48 @@
+{% extends 'main.html' %}
+{% load bootstrap %}
+{% block title %} Add new car {% endblock %}
+
+{% block page %}
+
+<div class="card" style="width: 32rem; ">
+    <div class="card-body">
+        {% if new %}
+        <h5 class="card-title">New Car</h5>
+        {% else %}
+        <h5 class="card-title">Edit Car</h5>
+        {% endif %}
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form|bootstrap }}
+            {{ form_more|bootstrap }}
+            <hr>
+            {% if new %}
+            <button type="submit" class="btn btn-secondary">add new car</button>
+            {% else %}
+            <button type="submit" class="btn btn-secondary">edit car</button>
+            {% endif %}
+        </form>
+    </div>
+    <a class="btn btn-outline-warning" href="{% url 'all_cars'  %}" role="button" style="color:orange">Back</a></button>
+
+</div>
+<hr>
+
+<div class="card" style="width: 32rem; float: left; margin-right: 1rem; ">
+    <div class="card-body">
+        <h5 class="card-title">Rate the car</h5>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form_rating|bootstrap }}
+            <button type="submit" class="btn btn-secondary">Rate</button>
+        </form>
+    </div>
+
+
+</div>
+{% for rating in ratings %}
+<h4>Stars: {{rating.coolness_rating}}</h4>
+<p>{{rating.opinion}}</p>
+
+{% endfor %}
+{% endblock %}

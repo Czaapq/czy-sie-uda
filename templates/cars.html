@@ -1,0 +1,59 @@
+{% extends 'main.html' %}
+
+{% block title %} Car list {% endblock %}
+
+{% block page %}
+<div class="jumbotron">
+    {% if user.is_authenticated %}
+    <h1 class="display-4">Hello, {{ user.username }}!</h1>
+    <button type="button" class="btn btn-info"><a href="{% url 'logout'  %}">Logout <i
+                class="fa-solid fa-right-from-bracket"></i></a></button>
+    {% else %}
+    <button type="button" class="btn btn-info"><a href="{% url 'login'  %}">Login <i
+                class="fa-solid fa-right-to-bracket"></i></a></button>
+    {% endif %}
+</div>
+
+<hr>
+
+
+
+
+<a class="btn btn-outline-warning" href="{% url 'new_car'  %}" role="button" style="color:orange"><i
+        class="fa-solid fa-plus"></i>
+    New car </a>
+
+
+{% if cars|length == 0 %}
+<h2> no cars in the database </h2>
+
+
+{% else %}
+<h2>car amount in database: {{ cars|length }} </h2>
+
+
+{% for car in cars %}
+<div class="card" style="width: 55rem;">
+    <div class="card-body">
+        <img src="/media/{{car.illustrative_photo}}" class="car-images">
+        <div class="row">
+            <div class="col-9">
+                <h5 class="card-title">{{ car }}</h5>
+            </div>
+            <div class="col-3">
+                <button type="submit" class="btn btn-secondary"><a href="{% url 'edit_car' car.id %}"><i
+                            class="fa-solid fa-pen"></i></a></button>
+                <button type="submit" class="btn btn-danger"><a href="{% url 'delete_car' car.id %}"><i
+                            class="fa-solid fa-trash"></i></a></button>
+            </div>
+            <div class="row">
+                <p class="card-text">{{ car.car_specification }}</p>
+            </div>
+
+
+        </div>
+    </div>
+
+    {% endfor %}
+    {% endif %}
+    {% endblock %}

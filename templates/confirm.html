@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+
+{% block title %} Car delete {% endblock %}
+
+{% block page %}
+<div class="card" style="width: 32rem;">
+    <div class="card-body">
+        <h5 class="card-title">Are you sure you want to delete : {{ car.brand_with_model }}?</h5>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Delete this car</button> <button type="button"
+                class="btn btn-warning"><a href="{% url 'all_cars'  %}">Back</a></button>
+
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+h2 {
+    color: rgb(236, 213, 5);
+}
+
+h3 {
+    color: blanchedalmond;
+}
+
+h5 {
+    font-size: 1.9rem;
+    color: aqua;
+}
+
+.car-images {
+    width: 200px;
+    float: left;
+}
