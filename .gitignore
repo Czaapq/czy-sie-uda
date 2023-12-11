@@ -1,4 +1,4 @@
 
+.env
 *pyc
-*.sqlite3
 my_media
