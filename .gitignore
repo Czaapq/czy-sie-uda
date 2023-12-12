@@ -1,6 +1,6 @@
-
 *.sqlite3
 *pyc
 .env
 my_media
-venv
+.venv
+.vscode
