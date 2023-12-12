@@ -4,3 +4,4 @@
 my_media
 .venv
 .vscode
+__pycache__
